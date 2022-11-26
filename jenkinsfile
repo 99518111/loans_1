@@ -12,15 +12,4 @@ node('built-in')
     {
      deploy adapters: [tomcat9(credentialsId: 'cfe369c6-f976-47da-8159-4b48df4fabcc', path: '', url: 'http://172.31.85.11:8080')], contextPath: 'testapp', war: '**/*.war'
    }
-   stage('continousTesting')
-    {
-    git '  https://github.com/intelliqittrainings/FunctionalTesting.git'
-    sh 'java -jar /var/lib/jenkins/workspace/practice_script/testing.jar'
-   }
-   stage('continousDelviery')
-    {
-    deploy adapters: [tomcat9(credentialsId: 'cfe369c6-f976-47da-8159-4b48df4fabcc', path: '', url: 'http://172.31.94.55:8080')], contextPath: 'prodapp', war: '**/*.war'
-    input message: 'waiting for approval for DM', submitter: 'navi'
-    
-   }
-}
+{  
